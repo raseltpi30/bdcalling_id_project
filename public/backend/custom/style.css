@@ -1,0 +1,47 @@
+.bootstrap-tagsinput {
+	background-color: transparent !important;
+    display: block !important;
+}
+.bootstrap-tagsinput input:focus{
+	background-color: transparent;
+    color: #fff;
+}
+.bootstrap-tagsinput .tag {
+	margin-right: 2px;
+	color: white;
+	background: #4278cf;
+}
+img{
+	object-fit: cover;
+}
+.product_price span {
+	position: relative;
+}
+.product_price span::after {
+	display: block;
+	position: absolute;
+	top: 7px;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background: #8d8d8d;
+	content: '';
+}
+.bestsellers_price{
+	float: right;
+}
+.standard_dropdown li ul {
+	left: -70%;
+}
+.standard_dropdown li.register ul {
+	left: -130%;
+}
+.home img{
+	border-radius: 50px;
+}
+.btn{
+	cursor: pointer;
+}
+body{
+	user-select: text;
+}

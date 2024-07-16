@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 // use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Intervention\Image\Colors\Rgb\Channels\Red;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -50,7 +52,8 @@ class LoginController extends Controller
                 return redirect()->route('admin.home');
             }
             else{
-                return redirect()->route('home');
+                Auth::logout();
+                return redirect()->back()->with('error','Invalid Email Or Password!');
             }
         }
         else{
@@ -59,6 +62,6 @@ class LoginController extends Controller
     }
 
     public function adminLogin(){
-        return view('auth.amdin_login');
+        return view('auth.admin_login');
     }
 }

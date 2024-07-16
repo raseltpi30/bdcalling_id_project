@@ -17,10 +17,10 @@ class IsAdmin
     {
         if(auth()->user()->is_admin == 1){
             return $next($request);
-            return redirect()->to('/check');
+            return redirect()->back();
         }
         else{
-            return redirect()->to('/home');
+            return redirect()->back();
         }
     }
 }
