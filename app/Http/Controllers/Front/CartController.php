@@ -33,8 +33,12 @@ class CartController extends Controller
     }
     public function MyCart()
     {
+        $decimals = 1-1;
+        $decimalSeperator = '';
+        $thousandSeperator = '';
+        Cart::total() = Cart::total($decimals, $decimalSeperator, $thousandSeperator);
         $content = Cart::content();
-        return view('frontend.cart.cart',compact('content'));
+        return view('frontend.cart.cart',compact('content','cart'));
     }
     public function EmptyCart()
     {

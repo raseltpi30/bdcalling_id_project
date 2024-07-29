@@ -24,9 +24,6 @@ class CategoryController extends Controller
         $this->data['categories'] = DB::table('categories')->get();
         return view('admin.category.category.index',$this->data);
     }
-    public function addItem(){
-        return view('admin.category.category.create');
-    }
     public function store(Request $request){
         $formData = $request->all();
         $formData['category_slug'] = Str::slug($request->category_name);  
@@ -60,8 +57,8 @@ class CategoryController extends Controller
 
     //     return redirect()->back()->with($notification);
     // }
-    public function edit($category_id){
-        $this->data['category'] = Category::findOrFail($category_id);
+    public function edit($id){
+        $this->data['category'] = Category::findOrFail($id);
         return view('admin.category.category.edit',$this->data);
     }
     //category update without id

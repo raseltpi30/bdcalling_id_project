@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('admin_content')
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -30,12 +29,12 @@
                 <div class="card-body">
                   <table id="example1" class="table table-bordered table-striped table-sm">
                     <thead>
-                    <tr>
-                      <th>SL</th>
-                      <th>Category Name</th>
-                      <th>Category Slug</th>
-                      <th>Action</th>
-                    </tr>
+                      <tr>
+                        <th>SL</th>
+                        <th>Category Name</th>
+                        <th>Category Slug</th>
+                        <th>Action</th>
+                      </tr>
                     </thead>
                     <tbody>
 
@@ -105,21 +104,26 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.js"></script>
+<script src="{{asset('backend')}}/dist/js/ajax.js"></script> 
 
 <script type="text/javascript">
-  $('.dropify').dropify();
-
-</script>
-
-<script type="text/javascript">
-	$('body').on('click','.edit', function(){
-		let cat_id=$(this).data('id');
-		$.get("blog-category/edit/"+cat_id, function(data){
-			 $("#modal_body").html(data);
-		});
-	});
+	// $('body').on('click','.edit', function(){
+	// 	let cat_id=$(this).data('id');
+	// 	$.get("admin/blog_category/edit/"+cat_id, function(data){
+	// 		 $("#modal_body").html(data);
+	// 	});
+	// }); ata 2 ta prefix dhorte pare na tai kaj hoina 
+  $('body').on('click','.edit', function(){
+	  var id=$(this).data('id');
+		var url = "{{ url('admin/blog_category/edit') }}/"+id;
+		$.ajax({
+			url:url,
+			type:'get',
+			success:function(data){  
+	        	$("#modal_body").html(data);
+	    	}
+	  	});
+    });//2 ta prefix dhorte pare tai kaj hoi
 
 </script>
 

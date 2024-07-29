@@ -48,7 +48,7 @@
               	</div>
               	<div class="form-group col-3">
               		<label>Date</label>
-              		 <input type="date" name="date" id="date" class="form-control submitable_input">
+              		 <input type="date" name="date"class="form-control submitable_input">
               	</div>
               	<div class="form-group col-3">
               		<label>Status</label>
@@ -59,7 +59,7 @@
   							<option value="2">Shipped</option>
   							<option value="3">Completed</option>
   							<option value="4">Return</option>
-  							<option value="5">Canccel</option>
+  							<option value="5">Cancel</option>
               		 </select>
               	</div>
               </div>
@@ -99,7 +99,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Pickup Point</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Order</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -127,8 +127,7 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<script src="{{asset('backend')}}/dist/js/ajax.js"></script>
 <script type="text/javascript">
 	$(function products(){
 		table=$('.ytable').DataTable({
@@ -148,7 +147,7 @@
 				{data:'c_name'  ,name:'c_name'},
 				{data:'c_phone'  ,name:'c_phone'},
 				{data:'c_email'  ,name:'c_email'},
-				{data:'subtotal',name:'subtotal'},
+				{data:'after_discount',name:'after_discount'},
 				{data:'total',name:'total'},
 				{data:'payment_type',name:'payment_type'},
 				{data:'date',name:'date'},
@@ -156,29 +155,40 @@
 				{data:'action',name:'action',orderable:true, searchable:true},
 			]
 		});
-	});
-
-	
-
-   
+	});   
 
     //order edit
 	$('body').on('click','.edit', function(){
 	    var id=$(this).data('id');
-		var url = "{{ url('order/admin/edit') }}/"+id;
+		var url = "{{ url('admin/order/edit') }}/"+id;
 		$.ajax({
 			url:url,
 			type:'get',
 			success:function(data){  
-	         $("#modal_body").html(data);
-	      }
-	  });
+	        	$("#modal_body").html(data);
+	    	}
+	  	});
     });
+	// $('body').on('click','.edit', function(){
+	// 	let id=$(this).data('id');
+	// 	// let url = "{{ url('order/edit') }}/"+id;
+	// 	$.get("order/edit/"+id, function(data){
+	// 		$("#modal_body").html(data);
+	// 	});
+	// });
+	// $('body').on('click','.view', function(){
+	// 	let id=$(this).data('id');
+	// 	// alert(id);
+	// 	// let url = "{{ url('order/edit') }}/"+id;
+	// 	$.get("order/view/"+id, function(data){
+	// 		$("#view_modal_body").html(data);
+	// 	});
+	// });
 
     //order view
 	$('body').on('click','.view', function(){
 	    var id=$(this).data('id');
-		var url = "{{ url('/order/view/admin') }}/"+id;
+		var url = "{{ url('/admin/order/view') }}/"+id;
 		$.ajax({
 			url:url,
 			type:'get',
@@ -194,7 +204,7 @@
       $('.ytable').DataTable().ajax.reload();
   });
 
-  $(document).on('blur','.submitable_input', function(){
+  $(document).on('change','.submitable_input', function(){
       $('.ytable').DataTable().ajax.reload();
   });
 

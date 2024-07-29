@@ -158,10 +158,6 @@
 <script src="{{asset('backend')}}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="{{asset('backend')}}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-<script type="text/javascript" src="{{asset('backend')}}/custom/product/js/bootstrap-tagsinput.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-{{-- <script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script> --}}
 <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
 
 <script src="{{ asset('backend') }}/plugins/summernote/summernote-bs4.min.js"></script>

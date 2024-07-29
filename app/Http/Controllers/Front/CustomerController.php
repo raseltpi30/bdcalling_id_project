@@ -59,6 +59,8 @@ class CustomerController extends Controller
         $formData['phone'] = $request->phone;
         $formData['password'] = $request->password;
         $formData['password'] = Hash::make($request->password);
+        $formData['created_at'] = date('Y-m-d');
+        $formData['updated_at'] = date('Y-m-d');
         if($request->profile_picture){
             $photo = $request->profile_picture;
             $photoname =Str::slug($request->name).'.'.$photo->getClientOriginalExtension();

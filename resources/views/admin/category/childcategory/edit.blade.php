@@ -1,10 +1,9 @@
-<form action="{{ route('childcategory.update') }}" method="Post" id="add-form">
+<form action="{{ route('childcategory.update') }}" method="Post">
     @csrf
     <div class="modal-body">
           <div class="form-group">
           <label for="category_name">Category/Subcategory </label>
           <select class="form-control" name="subcategory_id" required="">
-            $category=DB::table('category')->get();
               @foreach($category as $row)
                 @php 
                   $subcat=DB::table('subcategories')->where('category_id',$row->id)->get();

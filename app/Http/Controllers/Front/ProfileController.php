@@ -63,7 +63,7 @@ class ProfileController extends Controller
     }
     public function MyOrder(){
         //for customer order list
-        $orders = DB::table('orders')->orderBy('id','DESC')->get();
+        $orders = DB::table('orders')->where('user_id',Auth::id())->orderBy('id','DESC')->get();
         return view('user.my_order',compact('orders'));
     }
     public function ViewOrder($id){

@@ -1,6 +1,7 @@
 <form action="{{ route('brand.update') }}" method="Post" id="add-form" enctype="multipart/form-data">
   @csrf
   <div class="modal-body">
+    <input type="hidden" name="id" value="{{$blog->id}}">
       <div class="form-group">
         <label for="brand_name">Brand Name</label>
         <input type="text" id="brand_name" class="form-control"  name="brand_name" required="" placeholder="Brand Name" value="{{ $data->brand_name }}">

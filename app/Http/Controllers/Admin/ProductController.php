@@ -14,7 +14,7 @@ use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
-// for image intervention 
+// for image intervention  
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
@@ -31,8 +31,9 @@ class ProductController extends Controller
         if ($request->ajax()) {
             $imgurl='files/product';
 
-            $product="";
-              $query=DB::table('products')->leftJoin('categories','products.category_id','categories.id')
+            // $product="";
+              $query=DB::table('products')
+                    ->leftJoin('categories','products.category_id','categories.id')
                     ->leftJoin('subcategories','products.subcategory_id','subcategories.id')
                     ->leftJoin('brands','products.brand_id','brands.id');
 
@@ -55,8 +56,7 @@ class ProductController extends Controller
                     $query->where('products.status',0);
                 }
 
-            $product=$query->select('products.*','categories.category_name','subcategories.subcategory_name','brands.brand_name')
-                    ->get();
+            $product=$query->select('products.*','categories.category_name','subcategories.subcategory_name','brands.brand_name')->get();
             return DataTables::of($product)
                     ->addIndexColumn()
                     ->editColumn('thumbnail',function($row) use ($imgurl){
@@ -129,8 +129,6 @@ class ProductController extends Controller
        //subcategory call for category id
        $subcategory=DB::table('subcategories')->where('id',$request->subcategory_id)->first();
        $slug=Str::slug($request->name, '-');
-
-
        $data=array();
        $data['name']=$request->name;
        $data['slug']=Str::slug($request->name, '-');
@@ -364,7 +362,7 @@ class ProductController extends Controller
         }
 
         DB::table('products')->where('id',$id)->delete();
-        $notification=array('message' => 'Product Deleted!', 'alert-type' => 'success');
+        $notification=array('message' => 'Product Deleted!','alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
     public function show($id){

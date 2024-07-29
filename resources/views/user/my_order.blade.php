@@ -1,5 +1,5 @@
 @php
-	$setting = DB::table('settings')->get()->first();
+	$setting = DB::table('settings')->first();
 @endphp
 @extends('layouts.app')
 @section('content')

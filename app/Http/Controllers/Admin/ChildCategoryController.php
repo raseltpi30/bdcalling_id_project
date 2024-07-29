@@ -70,9 +70,8 @@ class ChildCategoryController extends Controller
     public function edit($childcategory_id){
         $category = DB::table('categories')->get();
         $data = ChildCategory::all()->where('id',$childcategory_id)->first();
+        // return $data->childcategory_name;
         return view('admin.category.childcategory.edit',compact('data','category'));
-
-        return $data;
     }
 
     public function update(Request $request){

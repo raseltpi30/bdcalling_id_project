@@ -54,7 +54,17 @@ $category=DB::table('categories')->orderBy('category_name','ASC')->get();
 									<li><a href="{{ url('/') }}">Home<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="index.html">Campaign<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="index.html">Helpline<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
+									<li class="hassubs">
+										<a href="#">Blog Category<i class="fas fa-chevron-down"></i></a>
+										@php
+											$blog_category = DB::table('blog_category')->get();
+										@endphp
+										<ul>
+											@foreach ($blog_category as $item)
+												<li><a href="{{route('user.blog.list',$item->id)}}">{{$item->category_name}}<i class="fas fa-chevron-down"></i></a></li>											
+											@endforeach
+										</ul>
+									</li>
 									<li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
 							</div>

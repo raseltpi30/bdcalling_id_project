@@ -15,9 +15,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'is_a
     // Routes For Category 
     Route::group(['prefix' => 'category'],function(){
         Route::get('/','CategoryController@index')->name('category.index');
-        Route::get('/add_category','CategoryController@addItem')->name('category.addItem');
         Route::post('/store','CategoryController@store')->name('category.store');
-        Route::get('/edit/{category_id}','CategoryController@edit')->name('category.edit');
+        Route::get('/edit/{id}','CategoryController@edit')->name('category.edit');
         Route::post('/update/{id}','CategoryController@update')->name('category.update');
         Route::get('/delete/{category_id}','CategoryController@destroy')->name('category.delete');
     });
@@ -28,8 +27,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'is_a
         Route::get('/','SubCategoryController@index')->name('subcategory.index');
         Route::get('/add_subcategory','SubCategoryController@addItem')->name('subcategory.addItem');
         Route::post('/store','SubCategoryController@store')->name('subcategory.store');
-        Route::get('/edit/{subcategory_id}','SubCategoryController@edit')->name('subcategory.edit');
-        Route::put('/update/{subcategory_id}','SubCategoryController@update')->name('subcategory.update');
+        Route::get('/edit/{id}','SubCategoryController@edit')->name('subcategory.edit');
+        Route::post('/update','SubCategoryController@update')->name('subcategory.update');
         Route::get('/delete/{subcategory_id}','SubCategoryController@destroy')->name('subcategory.delete');
     });
     // Routes For Category 
@@ -110,7 +109,14 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'is_a
         // Route for Smtp 
         Route::group(['prefix' => 'smtp'],function(){
             Route::get('/','SettingController@smtp')->name('setting.smtp');
-            Route::post('/update/','SettingController@smtpUpdate')->name('setting.smtp.update');
+            Route::post('/update','SettingController@smtpUpdate')->name('setting.smtp.update');
+        });
+        // Route for PaymentGateway 
+        Route::group(['prefix' => 'payment-gateway'],function(){
+            Route::get('/','SettingController@PaymentGateway')->name('payment.index');
+            Route::post('/update-aamarpay','SettingController@AamarpayUpdate')->name('update.aamarpay');
+            Route::post('/update-surjopay','SettingController@SurjopayUpdate')->name('update.surjopay');
+            Route::post('/update-surjopay','SettingController@SurjopayUpdate')->name('update.surjopay');
         });
         // Route for Smtp 
         Route::group(['prefix' => 'page'],function(){
@@ -126,8 +132,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'is_a
             Route::get('/','SettingController@website')->name('setting.website');
             Route::post('/update/{setting_id}','SettingController@websiteUpdate')->name('setting.website.update');
         });
-
-        //Pickup Point
+    });    
+    //Pickup Point 
 		Route::group(['prefix'=>'pickup-point'], function(){
 			Route::get('/','PickupController@index')->name('pickuppoint.index');
 			Route::post('/store','PickupController@store')->name('store.pickup.point');
@@ -144,9 +150,29 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'is_a
 			Route::delete('/ticket/delete/{id}','TicketController@destroy')->name('admin.ticket.delete');
 			
 	    });
-        //Route for customer order
-		Route::group(['prefix'=>'order'], function(){
-			Route::get('/','OrderController@index')->name('admin.order.index');			
-	    });
+    //Route for customer order
+    Route::group(['prefix'=>'admin'], function(){
+        Route::group(['prefix'=>'order'], function(){
+            Route::get('/','OrderController@index')->name('admin.order.index');			
+            Route::get('/edit/{id}','OrderController@edit');			
+            Route::post('/update','OrderController@updateStatus')->name('update.order.status');			
+            Route::get('/view/{id}','OrderController@ViewOrder');			
+            Route::get('delete/{id}','OrderController@delete')->name('admin.order.delete');	       
+        });  
+        Route::group(['prefix' => 'blog_category'],function(){
+            Route::get('/','BlogController@index')->name('admin.blog.category');
+            Route::post('/store','BlogController@store')->name('blog.category.store');
+            Route::get('/delete/{id}','BlogController@destroy')->name('blog.category.delete');
+            Route::get('/edit/{id}','BlogController@edit')->name('blog.category.edit');
+            Route::post('/update','BlogController@update')->name('blog.category.update');
+        });     
+
     });    
+    Route::group(['prefix' => 'blog_category'],function(){
+        Route::get('/blogs','BlogController@blog')->name('blog.index');
+        Route::post('/store','BlogController@blogStore')->name('blog.store');
+        Route::get('/edit/{id}','BlogController@blogEdit')->name('blog.edit');
+        Route::post('/update','BlogController@blogUpdate')->name('blog.update');
+        Route::get('/delete/{id}','BlogController@destroyBlog')->name('blog.delete');
+    });     
 });

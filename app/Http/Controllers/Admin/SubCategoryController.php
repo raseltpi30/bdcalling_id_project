@@ -8,6 +8,7 @@ use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Yajra\DataTables\DataTables;
 
 class SubCategoryController extends Controller
 {
@@ -15,30 +16,27 @@ class SubCategoryController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
-        // $data = DB::table('subcategories')->leftjoin('categories','subcategories.category_id','categories.id')->select('subcategories.*','categories.category_name');
-        
+    public function index(Request $request){
+        if($request->ajax()){
+            $subcategory = DB::table('subcategories')
+                ->leftJoin('categories','subcategories.category_id','categories.id')
+                ->select('subcategories.*','categories.category_name')->get();
 
-        // $data = DB::table('categories')
-        // ->leftJoin('subcategories', 'categories.id', '=', 'subcategories.id')
-        // ->get();
-        
-        // joining the posts table , where user_id and posts_user_id are same
-
-
-        // $this->data['subcategories'] = DB::table('subcategories')
-        // ->leftJoin('categories', 'subcategories.category_id', '=', 'categories.id')->select('subcategories.*','categories.category_name')
-        // ->get();// joining the posts table , where user_id and posts_user_id are same
-        $this->data['subcategories'] = SubCategory::all();
-        $this->data['categories'] = Category::all();
-        return view('admin.category.subcategory.index',$this->data);
-
-        // return $this->data;
-    }
-    public function addItem(){
-        $this->data['category'] = Category::all();
-        $this->data['mode']         = 'create';
-        return view('admin.category.subcategory.add_subcategory',$this->data);
+            return DataTables::of($subcategory)
+            ->addIndexColumn()
+            ->addColumn('action',function($row){
+                $actionbtn='<a href="#" class="btn btn-info btn-sm edit" data-id="'.$row->id.'" data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i></a>
+                <a href="'.route('subcategory.delete',['subcategory_id'=> $row->id]).'" class="btn btn-danger btn-sm" id="delete"><i class="fas fa-trash"></i>
+                </a>';
+                
+                return $actionbtn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }
+        $subcategory = SubCategory::all();
+        $category = Category::all();
+        return view('admin.category.subcategory.index',compact('category','subcategory'));
     }
     public function store(Request $request){
         $formData = $request->all();
@@ -51,15 +49,15 @@ class SubCategoryController extends Controller
         SubCategory::create($formData);
         return redirect()->route('subcategory.index')->with($notification);
     }
-    public function edit($subcategory_id){
-        $this->data['subcategory']         = SubCategory::findOrFail($subcategory_id);
+    public function edit($id){
+        $this->data['subcategory']         = SubCategory::findOrFail($id);
         $this->data['categories'] = Category::all();
-        $this->data['mode'] = 'edit'; 
         return view('admin.category.subcategory.edit',$this->data);
     }
-    public function update(Request $request,$subcategory_id){
+    public function update(Request $request){
+        // return $request->id;
         $data = $request->all();
-        $subcategory = SubCategory::findOrFail($subcategory_id);
+        $subcategory = SubCategory::findOrFail($request->id);
         $subcategory->category_id = $data['category_id'];
         $subcategory->subcategory_name = $data['subcategory_name'];
         $subcategory->subcategory_slug = Str::slug($data['subcategory_name']);

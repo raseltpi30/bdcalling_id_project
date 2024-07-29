@@ -39,7 +39,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Front'],function(){
     Route::get('/wishlistproduct/remove/{id}','CartController@RemoveWishlist')->name('wishlistproduct.remove');
     Route::get('/empty/wishlist','CartController@EmptyWishlist')->name('empty.wishlist');
 
-    //ROute for checkout
+    //Route for checkout
     Route::get('/checkout','CheckoutController@checkout')->name('checkout');
     Route::post('/apply/coupon','CheckoutController@ApplyCoupon')->name('apply.coupon');
     Route::get('/remove/coupon','CheckoutController@RemoveCoupon')->name('remove.coupon');
@@ -79,6 +79,18 @@ Route::group(['namespace' => 'App\Http\Controllers\Front'],function(){
     //order tracking
     Route::get('/order/tracking','IndexController@OrderTracking')->name('order.tracking');
     Route::post('/check/order','IndexController@CheckOrder')->name('check.order');
+    //Route for blog
+    Route::get('/all/blog/{id}','BlogController@blogList')->name('user.blog.list');
+    Route::get('/single/blog/{slug}','BlogController@singleBlog')->name('single.blog');
+
+    // Route for payment f=gateway 
+    
+    //__payment gateway
+    Route::post('/success','CheckoutController@success')->name('success');
+    Route::post('/fail','CheckoutController@fail')->name('fail');
+    Route::get('/success',function(){
+        return redirect()->to('/');
+    })->name('cancel');
 
 });
 

@@ -33,14 +33,11 @@
                                  <span class="badge badge-danger">Order Cancel</span>
                               @endif   <br>	
                      Date: {{ date('d F Y'),strtotime($order->c_name)}} <br>	
-                     Subtotal: {{ $order->subtotal }} {{ $setting->currency }}<br>	
                      Total: {{ $order->total }} {{ $setting->currency }}<br>
                      {{-- for discount  --}}
                      @isset($order->coupon_discount)
                         Coupon Discount: {{ $order->coupon_discount }} {{ $setting->currency }}<br>
-                     @endisset
-                     @isset($order->after_discount)
-                        After Discount: {{ $order->after_discount }} {{ $setting->currency }}<br>
+                        After Discount Total: {{ $order->after_discount }} {{ $setting->currency }}<br>
                      @endisset
                    <h4 class="mt-4">My All Order</h4>
                    <div>

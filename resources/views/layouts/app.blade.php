@@ -1,7 +1,7 @@
 @php
-	$setting = DB::table('settings')->get()->first();
 	$page_one = DB::table('pages')->where('page_position',1)->get();
 	$page_two = DB::table('pages')->where('page_position',2)->get();
+    $setting = DB::table('settings')->first();
 @endphp
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -162,10 +162,15 @@
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
 							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
-								<div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
+								<div class="wishlist_icon"><img src="{{asset('frontend')}}/images/heart.png" alt="">
+									<div class="cart_count">
+										<span>{{$wishlist}}</span>
+									</div>
+								</div>
 								<div class="wishlist_content">
-									<div class="wishlist_text"><a href="{{route('wishlist')}}">Wishlist</a></div>
-									<div class="wishlist_count">{{$wishlist}}</div>
+									<div class="wishlist_text">
+										<a href="{{route('wishlist')}}">Wishlist</a>
+									</div>
 								</div>
 							</div>
 

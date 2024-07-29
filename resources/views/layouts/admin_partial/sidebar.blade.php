@@ -1,8 +1,6 @@
-@php
-    $setting = DB::table('settings')->first();
+@php 
+  $setting=DB::table('settings')->first();
 @endphp
-
-
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('admin.home')}}" class="brand-link text-center">
@@ -147,12 +145,11 @@
               </li>
             </ul>
           </li>          
-          @if(Auth::user()->blog==1)
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-               Blogs
+               Blog
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -164,15 +161,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.blog.category') }}" class="nav-link">
+                <a href="{{ route('blog.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Blog</p>
+                  <p>Blogs</p>
                 </a>
               </li>
             </ul>
           </li>
-          @endif 
-
           @if(Auth::user()->pickup==1)
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -212,32 +207,7 @@
             </ul>
           </li>
           @endif
-
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Offer
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('coupon.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Coupon</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('setting.seo')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Mega Campain</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          {{-- pickup Point for project  --}}
-
+         {{-- pickup Point for project  --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -276,6 +246,12 @@
                 <a href="{{route('setting.website')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Website Setting</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('payment.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Payment Gateway</p>
                 </a>
               </li>
               <li class="nav-item">

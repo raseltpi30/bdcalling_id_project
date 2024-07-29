@@ -197,8 +197,7 @@
 </div>
 
 <script src="{{ asset('frontend') }}/js/shop_custom.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{asset('backend')}}/dist/js/ajax.js"></script>
 <script type="text/javascript">
     //ajax request send for collect childcategory
      $(document).on('click', '.quick_view', function(){ 

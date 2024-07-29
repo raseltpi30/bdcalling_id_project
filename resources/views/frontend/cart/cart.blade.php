@@ -13,8 +13,10 @@
             <div class="col-lg-12 ">
                 <div class="cart_container">
                     @if(count($content) == 0)
-                        <div class="text-danger">
-                            <h1 class="text-center cart_title p-5">Sjoping Cart is empty</h1>
+                        <div class="col-md-12">
+                            <div class="text-danger">
+                                <h1 class="text-center cart_title p-5">Shoping Cart is empty</h1>
+                            </div>
                         </div>
                     @else
                         <div class="cart_title">Shopping Cart</div>

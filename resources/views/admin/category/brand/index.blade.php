@@ -1,55 +1,55 @@
 @extends('layouts.admin')
 
 @section('admin_content')
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Brands Category</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <button class="btn btn-primary" data-toggle="modal" data-target="#addModal"> + Add New</button>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Brands Category</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addModal"> + Add New</button>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
     <!-- /.content-header -->
-     <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">All Brands list here</h3>
-              </div>
-              <!-- /.card-header -->
-                <div class="card-body">
-                  <table id="" class="table table-bordered table-striped table-sm ytable">
-                    <thead>
-                      <tr>
-                        <th>SL</th>
-                        <th>Brands Name</th>
-                        <th>Brands Slug</th>
-                        <th>Brand Logo</th>
-                        <th>Front Page</th>
-                        <th>Action</th>
-                      </tr>                      
-                    </thead>
-                    <tbody>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">All Brands list here</h3>
+            </div>
+                <!-- /.card-header -->
+            <div class="card-body">
+              <table id="" class="table table-bordered table-striped table-sm ytable">
+                  <thead>
+                    <tr>
+                      <th>SL</th>
+                      <th>Brands Name</th>
+                      <th>Brands Slug</th>
+                      <th>Brand Logo</th>
+                      <th>Front Page</th>
+                      <th>Action</th>
+                    </tr>                      
+                  </thead>
+                  <tbody>
 
-                  
-                    </tbody>
-                  </table>
-                </div>
-	          </div>
-	      </div>
-	  </div>
-	</div>
-</section>
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 {{-- Brands insert modal --}}
