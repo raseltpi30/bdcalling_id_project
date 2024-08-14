@@ -90,6 +90,6 @@ class HomeController extends Controller
         $data['maximum_bid'] = $request->maximum_bid;
 
         DB::table('bids')->insert($data);
-        return redirect()->route('')->with($notification);
+        return redirect()->back();
     }
 }
