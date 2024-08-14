@@ -15,7 +15,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $popular_property = Property::where('status', 1)->orderBy('product_views', 'DESC')->get();
+        $popular_property = Property::where('status', 1)->orderBy('property_views', 'DESC')->get();
         $new_property = Property::where('status', 1)->orderBy('id', 'DESC')->get();
         $cities   = City::all();
         $propertyTypes = PropertyType::all();
@@ -28,7 +28,7 @@ class HomeController extends Controller
 
         // Increment the product_views for the property if it exists
         if ($property) {
-            $property->increment('product_views');
+            $property->increment('property_views');
         }
 
         // Fetch the latest bid related to the property
@@ -90,5 +90,6 @@ class HomeController extends Controller
         $data['maximum_bid'] = $request->maximum_bid;
 
         DB::table('bids')->insert($data);
+        return redirect()->route('')->with($notification);
     }
 }

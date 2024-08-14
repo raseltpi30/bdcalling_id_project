@@ -12,7 +12,7 @@
                 @if(count($properties) > 0)
                     @foreach($properties as $property)
                         <div role="listitem" class="w-dyn-item mb-5">
-                            <a href="{{ route('propertyDetails', ['id' => $item->id, 'slug' => $item->slug]) }}" class="search_result_link w-inline-block">
+                            <a href="{{ route('propertyDetails', ['id' => $property->id, 'slug' => $property->slug]) }}" class="search_result_link w-inline-block">
                                 <div class="search_result_card">
                                     <div class="row">
                                         <div class="col-md-2">

@@ -65,13 +65,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('PropertySize.index') }}" class="nav-link">
+                            <a href="{{ route('PropertyType.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Property Type</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('PropertyType.index') }}" class="nav-link">
+                            <a href="{{ route('PropertySize.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Property Size</p>
                             </a>
