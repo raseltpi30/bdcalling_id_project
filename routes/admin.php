@@ -14,7 +14,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'is_a
     Route::get('/admin/password/change','AdminController@passwordChange')->name('admin.password.change');
     Route::post('/admin/password/update','AdminController@passwordUpdate')->name('admin.password.update');
 
-      // Routes For Category 
+      // Routes For Category
     Route::group(['prefix' => 'category'],function(){
         Route::get('/','CategoryController@index')->name('category.index');
         Route::post('/store','CategoryController@store')->name('category.store');
@@ -61,7 +61,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'is_a
     });
     Route::group(['prefix' => 'users'],function(){
         Route::get('/','AllManage@customerManage')->name('admin.userManage');
-        Route::post('/update','AllManage@customerStatus')->name('admin.Update');
+        Route::get('/update/{id}','AllManage@customerStatus')->name('admin.Update');
     });
     Route::group(['prefix' => 'bids'],function(){
         Route::get('/','AllManage@bidManage')->name('admin.bidManage');

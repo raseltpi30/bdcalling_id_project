@@ -1,7 +1,7 @@
 @extends('website.master')
 
 @section('title')
-    Home
+    Home Page
 @endsection
 
 @section('body')
@@ -42,6 +42,7 @@
                                                         <div class="w-form">
                                                             <select id="field" name="city_id"
                                                                 class="filter_selector w-select">
+                                                                <option value="" selected>Select a city</option>
                                                                 @foreach ($cities as $city)
                                                                     <option value="{{ $city->id }}">
                                                                         {{ $city->city_name }}</option>
@@ -58,6 +59,8 @@
                                                         <div class="w-form">
                                                             <select id="field-2" name="property_type_id"
                                                                 class="filter_selector w-select">
+                                                                <option value="" selected>Select a PropertyType
+                                                                </option>
                                                                 @foreach ($propertyTypes as $propertyType)
                                                                     <option value="{{ $propertyType->id }}">
                                                                         {{ $propertyType->name }}</option>
@@ -74,6 +77,7 @@
                                                         <div class="w-form">
                                                             <select id="field-2" name="budget"
                                                                 class="filter_selector w-select">
+                                                                <option value="" selected>Select a Budget</option>
                                                                 <option value="100">$100 & below</option>
                                                                 <option value="150-200">$150 - $200</option>
                                                                 <option value="201">$201 & above</option>
@@ -91,138 +95,132 @@
 
                                 <div class="tab-pane fade" id="intall-content" role="tabpanel" tabindex="0">
                                     <div class="tabs-content">
-                                        <div class="row">
-                                            <div class="filter_wrapper">
-                                                <div id="w-node-e89982ca-5794-ce18-bdc9-86da082a0f19-3cb8512a"
-                                                    class="filter_block">
-                                                    <div class="filter_visual">
-                                                        <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662202c0c58468fa14215e7d_fi-bs-marker.svg"
-                                                            loading="lazy" alt="">
-                                                        <div class="filter_name">Your Location</div>
-                                                    </div>
-                                                    <div class="w-form">
-                                                        <form id="email-form" name="email-form"" method="get"
-                                                            aria-label="Email Form">
-                                                            <select id="field" name="field"
+                                        <form method="POST" action="{{ route('search.properties') }}">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="filter_wrapper">
+                                                    <div class="filter_block">
+                                                        <div class="filter_visual">
+                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662202c0c58468fa14215e7d_fi-bs-marker.svg"
+                                                                loading="lazy" alt="">
+                                                            <div class="filter_name">Your Location</div>
+                                                        </div>
+                                                        <div class="w-form">
+                                                            <select id="field" name="city_id"
                                                                 class="filter_selector w-select">
-                                                                <option value=""></option>
-                                                                <option value="First">Kolkata</option>
-                                                                <option value="Second">Mumbai</option>
-                                                                <option value="Third">Delhi</option>
+                                                                <option value="" selected>Select a city</option>
+                                                                @foreach ($cities as $city)
+                                                                    <option value="{{ $city->id }}">
+                                                                        {{ $city->city_name }}</option>
+                                                                @endforeach
                                                             </select>
-                                                        </form>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div id="w-node-_0380350b-bbfd-b459-9ca0-d6abdd28a66f-3cb8512a"
-                                                    class="filter_block">
-                                                    <div class="filter_visual">
-                                                        <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662372a5fd9f586ebc33ccc3_fi-bs-home-location.svg"
-                                                            loading="lazy" alt="">
-                                                        <div class="filter_name">Property Type</div>
-                                                    </div>
-                                                    <div class="w-form">
-                                                        <form id="email-form" name="email-form" method="get"
-                                                            aria-label="Email Form">
-                                                            <select id="field-2" name="field-2"
+                                                    <div class="filter_block">
+                                                        <div class="filter_visual">
+                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662372a5fd9f586ebc33ccc3_fi-bs-home-location.svg"
+                                                                loading="lazy" alt="">
+                                                            <div class="filter_name">Property Type</div>
+                                                        </div>
+                                                        <div class="w-form">
+                                                            <select id="field-2" name="property_type_id"
                                                                 class="filter_selector w-select">
-                                                                <option value=""></option>
-                                                                <option value="First">Flat</option>
-                                                                <option value="Second">Land</option>
-                                                                <option value="Third">Parking Space</option>
+                                                                <option value="" selected>Select a PropertyType
+                                                                </option>
+                                                                @foreach ($propertyTypes as $propertyType)
+                                                                    <option value="{{ $propertyType->id }}">
+                                                                        {{ $propertyType->name }}</option>
+                                                                @endforeach
                                                             </select>
-                                                        </form>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div id="w-node-_14fc114b-910b-7f82-ce48-6fbec68a7552-3cb8512a"
-                                                    class="filter_block">
-                                                    <div class="filter_visual">
-                                                        <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/6623731c420708fcbda8bd3c_Subtract.svg"
-                                                            loading="lazy" alt="">
-                                                        <div class="filter_name">Budget</div>
-                                                    </div>
-                                                    <div class="w-form">
-                                                        <form id="email-form" name="email-form" method="get"
-                                                            aria-label="Email Form">
-                                                            <select id="field-2" name="field-2"
+                                                    <div class="filter_block">
+                                                        <div class="filter_visual">
+                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/6623731c420708fcbda8bd3c_Subtract.svg"
+                                                                loading="lazy" alt="">
+                                                            <div class="filter_name">Budget</div>
+                                                        </div>
+                                                        <div class="w-form">
+                                                            <select id="field-2" name="budget"
                                                                 class="filter_selector w-select">
-                                                                <option value=""></option>
-                                                                <option value="First">Economic</option>
-                                                                <option value="Second">Moderate</option>
-                                                                <option value="Third">Premium</option>
+                                                                <option value="" selected>Select a Budget</option>
+                                                                <option value="100">$100 & below</option>
+                                                                <option value="150-200">$150 - $200</option>
+                                                                <option value="201">$201 & above</option>
                                                             </select>
-                                                        </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <button type="submit" class="find_property_button w-button btn-info w-100"><i
+                                                    class='fas fa-search'></i> Find Property </button>
+                                        </form>
+
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="track-content" role="tabpanel" tabindex="0">
                                     <div class="tabs-content">
-                                        <div class="row">
-                                            <div class="filter_wrapper">
-                                                <div id="w-node-e89982ca-5794-ce18-bdc9-86da082a0f19-3cb8512a"
-                                                    class="filter_block">
-                                                    <div class="filter_visual">
-                                                        <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662202c0c58468fa14215e7d_fi-bs-marker.svg"
-                                                            loading="lazy" alt="">
-                                                        <div class="filter_name">Your Location</div>
-                                                    </div>
-                                                    <div class="w-form">
-                                                        <form id="email-form" name="email-form"" method="get"
-                                                            aria-label="Email Form">
-                                                            <select id="field" name="field"
+                                        <form method="POST" action="{{ route('search.properties') }}">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="filter_wrapper">
+                                                    <div class="filter_block">
+                                                        <div class="filter_visual">
+                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662202c0c58468fa14215e7d_fi-bs-marker.svg"
+                                                                loading="lazy" alt="">
+                                                            <div class="filter_name">Your Location</div>
+                                                        </div>
+                                                        <div class="w-form">
+                                                            <select id="field" name="city_id"
                                                                 class="filter_selector w-select">
-                                                                <option value=""></option>
-                                                                <option value="First">Kolkata</option>
-                                                                <option value="Second">Mumbai</option>
-                                                                <option value="Third">Delhi</option>
+                                                                <option value="" selected>Select a city</option>
+                                                                @foreach ($cities as $city)
+                                                                    <option value="{{ $city->id }}">
+                                                                        {{ $city->city_name }}</option>
+                                                                @endforeach
                                                             </select>
-                                                        </form>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div id="w-node-_0380350b-bbfd-b459-9ca0-d6abdd28a66f-3cb8512a"
-                                                    class="filter_block">
-                                                    <div class="filter_visual">
-                                                        <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662372a5fd9f586ebc33ccc3_fi-bs-home-location.svg"
-                                                            loading="lazy" alt="">
-                                                        <div class="filter_name">Property Type</div>
-                                                    </div>
-                                                    <div class="w-form">
-                                                        <form id="email-form" name="email-form" method="get"
-                                                            aria-label="Email Form">
-                                                            <select id="field-2" name="field-2"
+                                                    <div class="filter_block">
+                                                        <div class="filter_visual">
+                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662372a5fd9f586ebc33ccc3_fi-bs-home-location.svg"
+                                                                loading="lazy" alt="">
+                                                            <div class="filter_name">Property Type</div>
+                                                        </div>
+                                                        <div class="w-form">
+                                                            <select id="field-2" name="property_type_id"
                                                                 class="filter_selector w-select">
-                                                                <option value=""></option>
-                                                                <option value="First">Flat</option>
-                                                                <option value="Second">Land</option>
-                                                                <option value="Third">Parking Space</option>
+                                                                <option value="" selected>Select a PropertyType
+                                                                </option>
+                                                                @foreach ($propertyTypes as $propertyType)
+                                                                    <option value="{{ $propertyType->id }}">
+                                                                        {{ $propertyType->name }}</option>
+                                                                @endforeach
                                                             </select>
-                                                        </form>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div id="w-node-_14fc114b-910b-7f82-ce48-6fbec68a7552-3cb8512a"
-                                                    class="filter_block">
-                                                    <div class="filter_visual">
-                                                        <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/6623731c420708fcbda8bd3c_Subtract.svg"
-                                                            loading="lazy" alt="">
-                                                        <div class="filter_name">Budget</div>
-                                                    </div>
-                                                    <div class="w-form">
-                                                        <form id="email-form" name="email-form" method="get"
-                                                            aria-label="Email Form">
-                                                            <select id="field-2" name="field-2"
+                                                    <div class="filter_block">
+                                                        <div class="filter_visual">
+                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/6623731c420708fcbda8bd3c_Subtract.svg"
+                                                                loading="lazy" alt="">
+                                                            <div class="filter_name">Budget</div>
+                                                        </div>
+                                                        <div class="w-form">
+                                                            <select id="field-2" name="budget"
                                                                 class="filter_selector w-select">
-                                                                <option value=""></option>
-                                                                <option value="First">Economic</option>
-                                                                <option value="Second">Moderate</option>
-                                                                <option value="Third">Premium</option>
+                                                                <option value="" selected>Select a Budget</option>
+                                                                <option value="100">$100 & below</option>
+                                                                <option value="150-200">$150 - $200</option>
+                                                                <option value="201">$201 & above</option>
                                                             </select>
-                                                        </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <button type="submit" class="find_property_button w-button btn-info w-100"><i
+                                                    class='fas fa-search'></i> Find Property </button>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>

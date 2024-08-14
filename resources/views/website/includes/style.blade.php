@@ -8,8 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <!-- CSS Links -->
 <link href="{{ asset('website/assets/css/fontawesome.min.css') }}" rel="stylesheet">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="{{ asset('website/assets/css/owl.carousel.min.css') }}" rel="stylesheet">
 <link href="{{ asset('website/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+{{-- For Popup  --}}
+<link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/toastr/toastr.css') }}">
 <link href="{{ asset('website/assets/css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('website/assets/css/responsive.css') }}" rel="stylesheet">

@@ -1,7 +1,7 @@
 @extends('website.master')
 
 @section('title')
-    Home
+    {{$property->name}}
 @endsection
 
 @section('body')
@@ -100,13 +100,13 @@
                                     <div class="spacer_div"></div>
                                     <h4 class="heading-style-h4">${{ $property->selling_price }}</h4>
                                     <div class="spacer_div"></div>
-                                    <div>Your bid cannot be more than 10% of minimum property value + $5000.</div>
+                                    <div>Your bid cannot be more than 10% of minimum property value.</div>
                                     <div class="spacer_div"></div>
 
                                     <div id="bidValueUp">
                                         <div style="margin-bottom: 5px;">
                                             <div class="property" data-property-id="{{ $property->id }}">
-                                                <span id="bid-minimum-price">{{ $property->selling_price }}</span>
+                                                <span>{{ $bid->minimum_bid }}</span>
                                             </div>
                                         </div>
 
@@ -117,7 +117,7 @@
                                         <div style="margin-bottom: 5px;">
                                             <h6 class="heading-style-h6">Min Bid</h6>
                                             <div class="range_box_text">
-                                                <input style="font-size: 15px" type="number" id="maximum_bid" value="{{ $bid->maximum_bid * 0.1 + $bid->maximum_bid }}" name="maximum_bid" class="form-control" required>
+                                                <input style="font-size: 15px" type="number" id="maximum_bid" value="{{ $bid->maximum_bid * 0.1 + $bid->minimum_bid }}" name="maximum_bid" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -223,13 +223,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="property" data-property-id="123">
-
-            <div class="bid-minimum-price"></div>
-
-            <!-- other HTML elements -->
-
         </div>
     </main>
 

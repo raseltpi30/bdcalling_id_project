@@ -9,6 +9,7 @@ use App\Models\Property;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 // use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -81,15 +82,28 @@ class HomeController extends Controller
     }
 
     public function bidNew(Request $request){
-        $data = array();
+        if(Session::has("customer_id")){
+            if($request->maximum_bid <= $request->minimum_bid){
+                $notification = array('message' => 'Bid Must Be More than Minimum Bid!','alert-type' => 'error');
+                return redirect()->back()->with($notification);
+            }
+            else{
+                $data = array();
 
-        $data['customer_id'] = $request->customer_id;
-        $data['property_id'] = $request->property_id;
-        $data['minimum_bid'] = $request->minimum_bid;
-        $data['secondary_bid'] = $request->secondary_bid;
-        $data['maximum_bid'] = $request->maximum_bid;
+                $data['customer_id'] = $request->customer_id;
+                $data['property_id'] = $request->property_id;
+                $data['maximum_bid'] = $request->minimum_bid;
+                $data['secondary_bid'] = $request->secondary_bid;
+                $data['minimum_bid'] = $request->maximum_bid;
 
-        DB::table('bids')->insert($data);
-        return redirect()->back();
+                DB::table('bids')->insert($data);
+                $notification = array('message' => 'Bid Added Successfully!','alert-type' => 'success');
+                return redirect()->back()->with($notification);
+            }
+        }
+        else{
+            $notification = array('message' => 'Please Login First!','alert-type' => 'success');
+            return redirect()->route('customer.login')->with($notification);
+        }
     }
 }

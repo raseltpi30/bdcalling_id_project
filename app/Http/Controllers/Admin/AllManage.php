@@ -24,7 +24,8 @@ class AllManage extends Controller
         $customer = Custome::findOrFail($id);
         $customer->status = $customer->status == 1 ? 0 : 1;
         $customer->save();
-        return redirect()->back()->with('success', 'Customer status updated successfully.');
+        $notification = array('message' => 'Customer status updated successfully!','alert-type' => 'success');
+        return redirect()->back()->with($notification);
     }
 
     public function bidManage()

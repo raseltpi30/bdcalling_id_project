@@ -19,7 +19,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Countries</h1>
+            <h1 class="m-0">Cities</h1>
           </div><!-- /.col -->
           <div class="col-sm-6 text-right">
             <button href="#" class="btn btn-info"  data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i> Add New</button>
@@ -33,7 +33,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">All blog Countries list here</h3>
+                <h3 class="card-title">All city list here</h3>
               </div>
               <!-- /.card-header -->
                 <div class="card-body">
@@ -44,11 +44,11 @@
                       <th>City Name</th>
                       <th>Coutry Name</th>
                       <th>Action</th>
-                    </tr>                      
+                    </tr>
                   </thead>
                   <tbody>
 
-                    
+
                   </tbody>
                 </table>
                 </div>
@@ -74,15 +74,15 @@
                     <label for="name" class="col-sm-4 col-form-label text-right">Name *</label>
                     <div class="col-sm-8">
                       <input type="text" name="name" id="name" class="form-control" placeholder="name Name">
-                      <small id="emailHelp" class="form-text text-muted">This is your Name</small>                  
+                      <small id="emailHelp" class="form-text text-muted">This is your Name</small>
                     </div>
                 </div>
                 <div class="form-group row">
-                  <label for="category_id" class="col-sm-4 col-form-label text-right">Country Name *</label> 
+                  <label for="category_id" class="col-sm-4 col-form-label text-right">Country Name *</label>
                   <div class="col-sm-8">
                     <select class="form-control" name="country_id" required="">
                       @foreach ($country as $cat)
-                        <option value="{{$cat->id}}">{{$cat->name}}</option>                            
+                        <option value="{{$cat->id}}">{{$cat->name}}</option>
                       @endforeach
                     </select>
                     <small id="emailHelp" class="form-text text-muted">This is your Category Name</small>
@@ -108,15 +108,15 @@
         </button>
       </div>
      <div id="modal_body">
-      
-     </div>	
+
+     </div>
     </div>
   </div>
 </div>
 
 <script src="{{asset('backend')}}/dist/js/ajax.js"></script>
 <script src="{{asset('backend')}}/custom/product/js/dropify.min.js"></script>
-<script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script> 
+<script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <script type="text/javascript">
 $(function city(){
 		var table = $('.ytable').DataTable({

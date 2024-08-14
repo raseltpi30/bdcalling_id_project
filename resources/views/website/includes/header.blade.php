@@ -12,7 +12,7 @@
             </div>
             <div class="logo">
                 <div class="logo-side">
-                    <a href=""><img
+                    <a href="{{route('home')}}"><img
                             src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/6621148aee02d0fde5537ee1_Hertiage%20Nest%20-%20Final%20LOGO%20(1)%201.png"
                             alt="Logo here"></a>
                 </div>
@@ -23,7 +23,8 @@
             <div class="menus">
                 <nav class="nav menu menu-2">
                     <ul>
-                        <li><a href="">Manage Rentgals</a></li>
+                        <li><a href="{{route('about.page')}}">About Us</a></li>
+                        <li><a href="{{route('blog.page')}}">Blog</a></li>
                         @if (Session::get('customer_id'))
                             <li><a href="{{route('customer.logout')}}">{{ Session::get('customer_name') }}</a></li>
                         @else

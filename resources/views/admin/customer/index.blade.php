@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Country</h1>
+                        <h1 class="m-0">All Customer</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6 text-right">
                         <button href="#" class="btn btn-info" data-toggle="modal" data-target="#addModal"><i
@@ -43,49 +43,36 @@
                                     <thead>
                                         <tr>
                                             <th>SL No</th>
-                                            <th>Name</th>
                                             <th>Customer Name</th>
-                                            <th>Customer Info</th>
-                                            <th>Property Type</th>
-                                            <th>Property Min Price</th>
-                                            <th>Property Secondary Price</th>
-                                            <th>Property Maximum Price</th>
+                                            <th>Customer Email</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($bids as $item)
+                                        @foreach ($customers as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item->property->name ?? 'N/A' }}</td>
-                                                <td>{{ $item->customer->fname ?? 'N/A' }}</td>
-                                                <td>Email: {{ $item->customer->email ?? 'N/A' }}<br>Phone:
-                                                    {{ $item->customer->phone ?? 'N/A' }}</td>
-                                                <td>{{ $item->property->property_type->name ?? 'N/A' }}</td>
-                                                <td>{{ $item->minimum_bid }}</td>
-                                                <td>{{ $item->secondary_bid }}</td>
-                                                <td>{{ $item->maximum_bid }}</td>
+                                                <td>{{ $item->fname ?? 'N/A' }}</td>
+                                                <td>{{ $item->email ?? 'N/A' }}</td>
+                                                <td>
+                                                @if ($item->status ==1 )
+                                                        <div class="badge badge-success">Active</div>
+                                                @else
+                                                    <div class="badge badge-danger">Inactive</div>
+                                                @endif
+                                            </td>
 
                                                 <td>
-                                                    {{-- <a href="#" class="btn btn-info btn-sm edit" data-id="{{$category->id}}" data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i></a>
-                                                    <a id="delete" href="{{route('category.delete',['category_id' => $category->id]) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a> --}}
+                                                    @if ($item->status == 1)
+                                                        <a href="{{route('admin.Update',$item->id)}}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+                                                    @else
+                                                        <a href="{{route('admin.Update',$item->id)}}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>SL No</th>
-                                            <th>Name</th>
-                                            <th>Customer Name</th>
-                                            <th>Customer Info</th>
-                                            <th>Property Type</th>
-                                            <th>Property Min Price</th>
-                                            <th>Property Secondary Price</th>
-                                            <th>Property Maximum Price</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>

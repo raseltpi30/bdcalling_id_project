@@ -73,13 +73,6 @@ class PropertyController extends Controller
             $thumbnail = $manager->read($request->thumbnail);
             $thumbnail->toJpeg(80)->save(base_path('public/files/property/' . $photoname));
             $data['thumbnail'] = $photoname;   // public/files/property/plus-point.jpg
-
-            // using image intervention
-            //  $manager = new ImageManager(new Driver());
-            //  $thumbnail = $manager->read($request->thumbnail);
-            //  $thumbnail = $thumbnail->resize(32,32);
-            //  $thumbnail->toJpeg(80)->save(base_path('public/files/website_setting/'.$photoname));
-            //  $data['favicon'] = 'files/website_setting/'.$faviconname;
         }
         //multiple images
         $images = array();
@@ -101,9 +94,9 @@ class PropertyController extends Controller
         DB::table('bids')->insert([
             'property_id' => $propertyId,
             'customer_id' => 0,
-            'minimum_bid' => $request->starting_price,
-            'secondary_bid' => $request->starting_price,
-            'maximum_bid' => $request->starting_price,
+            'minimum_bid' => $request->selling_price,
+            'secondary_bid' => $request->selling_price,
+            'maximum_bid' => $request->selling_price,
         ]);
 
         $notification = array('message' => 'Property Created Successfully!', 'alert-type' => 'success');

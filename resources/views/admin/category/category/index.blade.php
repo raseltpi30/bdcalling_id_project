@@ -33,7 +33,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">All blog categories list here</h3>
+                <h3 class="card-title">All categories list here</h3>
               </div>
               <!-- /.card-header -->
                 <div class="card-body">
@@ -52,20 +52,20 @@
                           <td> {{$key+1}} </td>
                           <td>{{$category->category_name}}</td>
                           <td>{{$category->category_slug}}</td>
-                          <td>                                    
+                          <td>
                             <a href="#" class="btn btn-info btn-sm edit" data-id="{{$category->id}}" data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i></a>
                             <a id="delete" href="{{route('category.delete',['category_id' => $category->id]) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                           </td>
                         </tr>
                       @endforeach
-                    </tbody>                       
+                    </tbody>
                         <tfoot>
                           <tr>
                             <th>SL No</th>
                             <th>Category Name</th>
                             <th>Category Slug</th>
                             <th>Action</th>
-                          </tr>                          
+                          </tr>
                         </tfoot>
                       </table>
                 </div>
@@ -81,7 +81,7 @@
         @csrf
         <div class="modal-content">
           <div class="modal-header">
-                <h5 class="modal-title" id="newSaleModalLabel"> Add New Category </h5>               
+                <h5 class="modal-title" id="newSaleModalLabel"> Add New Category </h5>
           </div>
           <div class="modal-body">
               <div class="form-group row">
@@ -115,15 +115,15 @@
         </button>
       </div>
      <div id="modal_body">
-      
-     </div>	
+
+     </div>
     </div>
   </div>
 </div>
 
 <script src="{{asset('backend')}}/dist/js/ajax.js"></script>
 <script src="{{asset('backend')}}/custom/product/js/dropify.min.js"></script>
-<script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script> 
+<script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <script type="text/javascript">
   $('.dropify').dropify();  //dropify image
   $("input[data-bootstrap-switch]").each(function(){

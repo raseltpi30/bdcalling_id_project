@@ -1,7 +1,7 @@
 @extends('website.master')
 
 @section('title')
-    Search Results
+    Search Page
 @endsection
 
 @section('body')

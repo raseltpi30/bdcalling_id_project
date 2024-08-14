@@ -7,8 +7,8 @@
                         <div class="footer_menu">
                             <div class="footer_menu_wrapper">
                                 <div class="footer_logo_wrapper">
-                                    <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/6621148aee02d0fde5537ee1_Hertiage%20Nest%20-%20Final%20LOGO%20(1)%201.png"
-                                        loading="lazy" alt="">
+                                    <a href="{{route('home')}}"><img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/6621148aee02d0fde5537ee1_Hertiage%20Nest%20-%20Final%20LOGO%20(1)%201.png"
+                                        loading="lazy" alt=""></a>
                                     <div>Design amazing digital experiences that create more happy in the world.
                                     </div>
                                 </div>

@@ -19,7 +19,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Countries</h1>
+            <h1 class="m-0">Property Size</h1>
           </div><!-- /.col -->
           <div class="col-sm-6 text-right">
             <button href="#" class="btn btn-info"  data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i> Add New</button>
@@ -33,7 +33,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">All blog Countries list here</h3>
+                <h3 class="card-title">All All Property Size list here</h3>
               </div>
               <!-- /.card-header -->
                 <div class="card-body">
@@ -43,11 +43,11 @@
                       <th>SL</th>
                       <th>Property Size</th>
                       <th>Action</th>
-                    </tr>                      
+                    </tr>
                   </thead>
                   <tbody>
 
-                    
+
                   </tbody>
                 </table>
                 </div>
@@ -74,7 +74,7 @@
                 <label for="name">Name :</label>
                 <input type="text" id="name" class="form-control"  name="name" required="" placeholder="Brand Name" value="">
                 <small id="emailHelp" class="form-text text-muted">Property size here</small>
-              </div>   
+              </div>
           </div>
           <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Add New Property</button>
@@ -95,15 +95,15 @@
         </button>
       </div>
      <div id="modal_body">
-      
-     </div>	
+
+     </div>
     </div>
   </div>
 </div>
 
 <script src="{{asset('backend')}}/dist/js/ajax.js"></script>
 <script src="{{asset('backend')}}/custom/product/js/dropify.min.js"></script>
-<script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script> 
+<script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <script type="text/javascript">
 $(function country(){
 		var table = $('.ytable').DataTable({

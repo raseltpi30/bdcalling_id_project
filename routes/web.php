@@ -33,4 +33,7 @@ Route::get('/customer/login', [CustomeController::class, 'loginForm'])->name('cu
 Route::get('/customer/logout', [CustomeController::class, 'logout'])->name('customer.logout');
 Route::post('/customer/login', [CustomeController::class, 'customerLoginCheck'])->name('customer.login');
 
+Route::get('/about', [CustomeController::class, 'about'])->name('about.page');
+Route::get('/blogs', [CustomeController::class, 'blog'])->name('blog.page');
+
 Auth::Routes();

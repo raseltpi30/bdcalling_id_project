@@ -33,7 +33,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">All blog Countries list here</h3>
+                <h3 class="card-title">All Countries list here</h3>
               </div>
               <!-- /.card-header -->
                 <div class="card-body">
@@ -44,11 +44,11 @@
                       <th>Brands Name</th>
                       <th>Image</th>
                       <th>Action</th>
-                    </tr>                      
+                    </tr>
                   </thead>
                   <tbody>
 
-                    
+
                   </tbody>
                 </table>
                 </div>
@@ -75,13 +75,13 @@
                 <label for="name">Name :</label>
                 <input type="text" id="name" class="form-control"  name="name" required="" placeholder="Brand Name" value="">
                 <small id="emailHelp" class="form-text text-muted">This is your Brand Name</small>
-              </div>   
+              </div>
               <div class="form-group">
                 <label for="image">Country Flag :</label>
                 <input type="file" id="image" class="dropify"  name="image" placeholder="Brand Logo">
                 <input type="hidden" name="old_image" value="">
                 <small id="emailHelp" class="form-text text-muted">This is your Image</small>
-              </div>   
+              </div>
           </div>
           <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Add New Country</button>
@@ -102,15 +102,15 @@
         </button>
       </div>
      <div id="modal_body">
-      
-     </div>	
+
+     </div>
     </div>
   </div>
 </div>
 
 <script src="{{asset('backend')}}/dist/js/ajax.js"></script>
 <script src="{{asset('backend')}}/custom/product/js/dropify.min.js"></script>
-<script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script> 
+<script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <script type="text/javascript">
 $(function country(){
 		var table = $('.ytable').DataTable({
