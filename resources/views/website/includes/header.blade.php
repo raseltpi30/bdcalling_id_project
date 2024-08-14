@@ -25,7 +25,7 @@
                     <ul>
                         <li><a href="">Manage Rentgals</a></li>
                         @if (Session::get('customer_id'))
-                            <li>{{ Session::get('customer_name') }}</li>
+                            <li><a href="{{route('customer.logout')}}">{{ Session::get('customer_name') }}</a></li>
                         @else
                             <li><a href="{{ route('customer.login') }}">login</a></li>
                         @endif
