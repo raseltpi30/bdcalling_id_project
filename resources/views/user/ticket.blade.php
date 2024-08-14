@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    All Ticket
+@endsection
 @section('content')
 <div class="container">
     <div class="row ">

@@ -2,6 +2,9 @@
 	$setting = DB::table('settings')->first();
 @endphp
 @extends('layouts.app')
+@section('title')
+    MyOrder
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

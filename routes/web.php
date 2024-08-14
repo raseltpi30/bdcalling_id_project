@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\website\CustomeController;
+use App\Http\Controllers\website\HomeController as WebController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,85 +16,21 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::post('customer/login', [App\Http\Controllers\Front\CustomerController::class, 'CustomerLogin'])->name('customer.login');
-Route::get('customer/register', [App\Http\Controllers\Front\CustomerController::class, 'Register'])->name('customer.register');
-Route::post('customer/register', [App\Http\Controllers\Front\CustomerController::class, 'CustomerRegister']);
 
-Route::group(['namespace' => 'App\Http\Controllers\Front'],function(){
-    Route::get('customer/logout','ProfileController@CustomerLogout')->name('customer.logout');
-    Route::get('/home','ProfileController@Home')->name('home');
-    Route::get('/','IndexController@index')->name('index');
-    Route::get('/product_details/{slug}','IndexController@productDetails')->name('product.details');
-    Route::get('/product-quick-view/{id}','ReviewController@quick')->name('product.view');
-    //Route For Cart
-    Route::post('/add-to-cart','CartController@index')->name('add.to.cart');
-    Route::get('/all-cart','CartController@AllCart')->name('all.cart'); //ajax request for subtotal
-    Route::get('/mycart','CartController@MyCart')->name('cart');
-    Route::get('/empty/cart','CartController@EmptyCart')->name('empty.cart');
-    Route::get('/cartproduct/remove/{rowId}','CartController@RemoveCart')->name('cartproduct.remove');
-    Route::get('/cartproduct/updateqty/{rowId}/{qty}','CartController@UpdateQty')->name('cartproduct.updateqty');
-    Route::get('/cartproduct/colorUpdate/{rowId}/{color}','CartController@ColorUpdate')->name('cartproduct.colorUpdate');
-    Route::get('/cartproduct/sizeUpdate/{rowId}/{size}','CartController@SizeUpdate')->name('cartproduct.sizeUpdate');
+Route::get('/', [WebController::class, 'index'])->name('home');
+Route::post('/search/properties', [WebController::class, 'searchProperties'])->name('search.properties');
 
-    //Route For Wishlist
-    Route::get('/wishlist/{id}','ReviewController@addWishlist')->name('product.wishlist');
-    Route::get('/wishlist','CartController@wishlist')->name('wishlist');
-    Route::get('/wishlistproduct/remove/{id}','CartController@RemoveWishlist')->name('wishlistproduct.remove');
-    Route::get('/empty/wishlist','CartController@EmptyWishlist')->name('empty.wishlist');
+Route::get('/property_details/{id}/{slug}', [WebController::class, 'propertyDetails'])->name('propertyDetails');
 
-    //Route for checkout
-    Route::get('/checkout','CheckoutController@checkout')->name('checkout');
-    Route::post('/apply/coupon','CheckoutController@ApplyCoupon')->name('apply.coupon');
-    Route::get('/remove/coupon','CheckoutController@RemoveCoupon')->name('remove.coupon');
-    Route::post('/order/place','CheckoutController@OrderPlace')->name('order.place');
+Route::post('/property_details/bid', [WebController::class, 'bidNew'])->name('bid.new');
 
-    // categorywise product
-    Route::get('/categorywise/{id}','IndexController@CategoryWiseProduct')->name('categorywise.product');
-    Route::get('/subcategorywise/{id}','IndexController@SubCategoryWiseProduct')->name('subcategorywise.product');
-    Route::get('/childcategorywise/{id}','IndexController@ChildCategoryWiseProduct')->name('childcategorywise.product');
-    Route::get('/brandwise/{id}','IndexController@BrandWiseProduct')->name('brandwise.product');
-    
-    // Review for product    
-    Route::post('/review','ReviewController@review')->name('product.review');
 
-    // Review for website    
-    Route::get('/webreview','ProfileController@WriteReview')->name('write.review');
-    Route::post('/storereview','ProfileController@StoreReview')->name('store.review');
+// login and Registration
+Route::get('/customer/registration', [CustomeController::class, 'registrationForm'])->name('customer.registration');
+Route::post('/customer/registration', [CustomeController::class, 'saveCustomerInfo'])->name('customer.registration');
 
-    // Route for Customer Password Change
-    Route::get('/home/setting','ProfileController@setting')->name('customer.setting');
-    Route::post('/customer/password','ProfileController@PasswordChange')->name('customer.password.change');
-
-    //Route for pages
-    Route::get('/page/{page_slug}','IndexController@ViewPage')->name('view.page');
-    Route::post('/newsletter','IndexController@Newsletter')->name('newsletter');
-
-    //Route for customer order list
-    Route::get('/my/order','ProfileController@MyOrder')->name('my.order');
-    Route::get('/view/order/{id}','ProfileController@ViewOrder')->name('view.order');
-
-    //Route for customer ticket
-    Route::get('/open/ticket','TicketController@OpenTicket')->name('open.ticket');
-    Route::get('/new/ticket','TicketController@NewTicket')->name('new.ticket');
-    Route::post('/store/ticket','TicketController@StoreTicket')->name('store.ticket');
-    Route::get('/show/ticket/{id}','TicketController@ShowTicket')->name('show.ticket');
-
-    //order tracking
-    Route::get('/order/tracking','IndexController@OrderTracking')->name('order.tracking');
-    Route::post('/check/order','IndexController@CheckOrder')->name('check.order');
-    //Route for blog
-    Route::get('/all/blog/{id}','BlogController@blogList')->name('user.blog.list');
-    Route::get('/single/blog/{slug}','BlogController@singleBlog')->name('single.blog');
-
-    // Route for payment f=gateway 
-    
-    //__payment gateway
-    Route::post('/success','CheckoutController@success')->name('success');
-    Route::post('/fail','CheckoutController@fail')->name('fail');
-    Route::get('/success',function(){
-        return redirect()->to('/');
-    })->name('cancel');
-
-});
+Route::get('/customer/login', [CustomeController::class, 'loginForm'])->name('customer.login');
+Route::get('/customer/logout', [CustomeController::class, 'logout'])->name('customer.logout');
+Route::post('/customer/login', [CustomeController::class, 'customerLoginCheck'])->name('customer.login');
 
 Auth::Routes();

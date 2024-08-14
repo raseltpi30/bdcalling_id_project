@@ -43,8 +43,6 @@
                         <th>SL No</th>
                         <th>Category Name</th>
                         <th>Category Slug</th>
-                        <th>Category Icon</th>
-                        <th>Homepage</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -54,14 +52,6 @@
                           <td> {{$key+1}} </td>
                           <td>{{$category->category_name}}</td>
                           <td>{{$category->category_slug}}</td>
-                          <td><img src="{{asset('files/category/'.$category->category_icon)}}" alt="{{$category->category_name}}"></td>
-                          <td>
-                            @if ($category->homepage == 1)
-                              <span class="badge badge-success">Homepage</span>
-                            @else
-                              <span class="badge badge-danger">Not Homepage</span>
-                            @endif
-                          </td>
                           <td>                                    
                             <a href="#" class="btn btn-info btn-sm edit" data-id="{{$category->id}}" data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i></a>
                             <a id="delete" href="{{route('category.delete',['category_id' => $category->id]) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
@@ -74,8 +64,6 @@
                             <th>SL No</th>
                             <th>Category Name</th>
                             <th>Category Slug</th>
-                            <th>Category Icon</th>
-                            <th>Homepage</th>
                             <th>Action</th>
                           </tr>                          
                         </tfoot>
@@ -89,7 +77,7 @@
 {{-- Category insert modal --}}
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-      <form action="{{route('category.store')}}" method="Post" enctype="multipart/form-data">
+      <form action="{{route('category.store')}}" method="Post">
         @csrf
         <div class="modal-content">
           <div class="modal-header">
@@ -105,28 +93,6 @@
                         {{ $message }}
                     </div>
                     @enderror
-                  </div>
-              </div>
-              <div class="form-group row">
-                  <label for="category_icon" class="col-sm-4 col-form-label text-right"> Category Icon *</label>
-                  <div class="col-sm-8">
-                    <input type="file" name="category_icon" class="dropify" id="category_icon">
-                    @error('category_icon')
-                    <div class="alert alert-danger p-1" style="font-size:14px">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                  </div>
-              </div>
-              <div class="form-group row">
-                  <label for="homepage" class="col-sm-4 col-form-label text-right"> Homepage *</label>
-                  <div class="col-sm-8">
-                      <input type="checkbox" name="homepage" value="1"  data-bootstrap-switch data-off-color="danger" data-on-color="success" id="homepage">
-                      @error('homepage')
-                        <div class="alert alert-danger p-1" style="font-size:14px">
-                            {{ $message }}
-                        </div>
-                      @enderror
                   </div>
               </div>
           </div>

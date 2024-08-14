@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Registration
+@endsection
 @section('content')
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/styles/product_styles.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/styles/product_responsive.css">

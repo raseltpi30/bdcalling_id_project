@@ -2,6 +2,9 @@
 	$setting = DB::table('settings')->get()->first();
 @endphp
 @extends('layouts.app')
+@section('title')
+    {{Auth::user()->name}}
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
