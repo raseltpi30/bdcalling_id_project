@@ -35,37 +35,45 @@
                                                 <div class="filter_wrapper">
                                                     <div class="filter_block">
                                                         <div class="filter_visual">
-                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662202c0c58468fa14215e7d_fi-bs-marker.svg" loading="lazy" alt="">
+                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662202c0c58468fa14215e7d_fi-bs-marker.svg"
+                                                                loading="lazy" alt="">
                                                             <div class="filter_name">Your Location</div>
                                                         </div>
                                                         <div class="w-form">
-                                                            <select id="field" name="city_id" class="filter_selector w-select">
+                                                            <select id="field" name="city_id"
+                                                                class="filter_selector w-select">
                                                                 @foreach ($cities as $city)
-                                                                    <option value="{{ $city->id }}">{{ $city->city_name }}</option>
+                                                                    <option value="{{ $city->id }}">
+                                                                        {{ $city->city_name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="filter_block">
                                                         <div class="filter_visual">
-                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662372a5fd9f586ebc33ccc3_fi-bs-home-location.svg" loading="lazy" alt="">
+                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/662372a5fd9f586ebc33ccc3_fi-bs-home-location.svg"
+                                                                loading="lazy" alt="">
                                                             <div class="filter_name">Property Type</div>
                                                         </div>
                                                         <div class="w-form">
-                                                            <select id="field-2" name="property_type_id" class="filter_selector w-select">
+                                                            <select id="field-2" name="property_type_id"
+                                                                class="filter_selector w-select">
                                                                 @foreach ($propertyTypes as $propertyType)
-                                                                    <option value="{{ $propertyType->id }}">{{ $propertyType->name }}</option>
+                                                                    <option value="{{ $propertyType->id }}">
+                                                                        {{ $propertyType->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="filter_block">
                                                         <div class="filter_visual">
-                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/6623731c420708fcbda8bd3c_Subtract.svg" loading="lazy" alt="">
+                                                            <img src="https://assets-global.website-files.com/6620c39e0f73c5b63cb850e8/6623731c420708fcbda8bd3c_Subtract.svg"
+                                                                loading="lazy" alt="">
                                                             <div class="filter_name">Budget</div>
                                                         </div>
                                                         <div class="w-form">
-                                                            <select id="field-2" name="budget" class="filter_selector w-select">
+                                                            <select id="field-2" name="budget"
+                                                                class="filter_selector w-select">
                                                                 <option value="100">$100 & below</option>
                                                                 <option value="150-200">$150 - $200</option>
                                                                 <option value="201">$201 & above</option>
@@ -74,7 +82,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="find_property_button w-button btn-info w-100"><i class='fas fa-search'></i> Find Property </button>
+                                            <button type="submit" class="find_property_button w-button btn-info w-100"><i
+                                                    class='fas fa-search'></i> Find Property </button>
                                         </form>
 
                                     </div>
@@ -291,7 +300,8 @@
                 <div class="row">
                     <div class="owl-carousel owl-theme" id="myCarousel">
                         @foreach ($popular_property as $item)
-                        <a href="{{ route('propertyDetails', ['id' => $item->id, 'slug' => $item->slug]) }}" class="w-inline-block">
+                            <a href="{{ route('propertyDetails', ['id' => $item->id, 'slug' => $item->slug]) }}"
+                                class="w-inline-block">
                                 <div class="property_card">
                                     <img src="{{ asset('files/property/' . $item->thumbnail) }}" loading="lazy"
                                         alt="Property Image">
@@ -335,7 +345,8 @@
             </div>
             <div class="owl-carousel owl-theme" id="myCarousel3">
                 @foreach ($new_property as $item)
-                <a href="{{ route('propertyDetails', ['id' => $item->id, 'slug' => $item->slug]) }}" class="w-inline-block">
+                    <a href="{{ route('propertyDetails', ['id' => $item->id, 'slug' => $item->slug]) }}"
+                        class="w-inline-block">
                         <div class="property_card">
                             <img src="{{ asset('files/property/' . $item->thumbnail) }}" loading="lazy"
                                 alt="Property Image">
