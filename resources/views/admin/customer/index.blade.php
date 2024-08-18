@@ -56,18 +56,20 @@
                                                 <td>{{ $item->fname ?? 'N/A' }}</td>
                                                 <td>{{ $item->email ?? 'N/A' }}</td>
                                                 <td>
-                                                @if ($item->status ==1 )
+                                                    @if ($item->status == 1)
                                                         <div class="badge badge-success">Active</div>
-                                                @else
-                                                    <div class="badge badge-danger">Inactive</div>
-                                                @endif
-                                            </td>
+                                                    @else
+                                                        <div class="badge badge-danger">Inactive</div>
+                                                    @endif
+                                                </td>
 
                                                 <td>
                                                     @if ($item->status == 1)
-                                                        <a href="{{route('admin.Update',$item->id)}}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+                                                        <a href="{{ route('admin.Update', $item->id) }}"
+                                                            class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
                                                     @else
-                                                        <a href="{{route('admin.Update',$item->id)}}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+                                                        <a href="{{ route('admin.Update', $item->id) }}"
+                                                            class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
                                                     @endif
                                                 </td>
                                             </tr>
@@ -79,37 +81,39 @@
                     </div>
                 </div>
             </div>
+        </section>
 
-            {{-- edit modal --}}
-            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div id="modal_body">
+        {{-- edit modal --}}
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="modal_body">
 
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <script src="{{ asset('backend') }}/dist/js/ajax.js"></script>
-            <script src="{{ asset('backend') }}/custom/product/js/dropify.min.js"></script>
-            <script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-            <script type="text/javascript">
-                $('.dropify').dropify(); //dropify image
-                $("input[data-bootstrap-switch]").each(function() {
-                    $(this).bootstrapSwitch('state', $(this).prop('checked'));
-                });
-                $('body').on('click', '.edit', function() {
-                    let id = $(this).data('id');
-                    $.get("category/edit/" + id, function(data) {
-                        $("#modal_body").html(data);
-                    });
-                });
-            </script>
-        @endsection
+    <script src="{{ asset('backend') }}/dist/js/ajax.js"></script>
+    <script src="{{ asset('backend') }}/custom/product/js/dropify.min.js"></script>
+    <script src="{{ asset('backend') }}/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript">
+        $('.dropify').dropify(); //dropify image
+        $("input[data-bootstrap-switch]").each(function() {
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        });
+        $('body').on('click', '.edit', function() {
+            let id = $(this).data('id');
+            $.get("category/edit/" + id, function(data) {
+                $("#modal_body").html(data);
+            });
+        });
+    </script>
+@endsection

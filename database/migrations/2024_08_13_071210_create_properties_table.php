@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('images')->nullable();
             $table->string('status')->nullable();
+            $table->string('property_views')->default(1);
             $table->string('admin_id')->nullable();
             $table->string('date')->nullable();
             $table->timestamps();

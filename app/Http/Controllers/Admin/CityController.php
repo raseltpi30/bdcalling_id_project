@@ -27,7 +27,7 @@ class CityController extends Controller
                 $actionbtn='<a href="#" class="btn btn-info btn-sm edit" data-id="'.$row->id.'" data-toggle="modal" data-target="#editModal" ><i class="fas fa-edit"></i></a>
                 <a href="'.route('city.delete',$row->id).'" class="btn btn-danger btn-sm" id="delete"><i class="fas fa-trash"></i>
                 </a>';
-                return $actionbtn; 	
+                return $actionbtn;
             })
             ->rawColumns(['action'])
             ->make(true);
@@ -36,15 +36,15 @@ class CityController extends Controller
         $country = Country::all();
         $city = City::all();
         return view('admin.category.city.index',compact('city','country'));
-        
+
     }
     public function store(Request $request){
         $formData = array();
         // return $formData;
-        $formData['city_name'] = $request->name;  
-        $formData['country_id'] = $request->country_id;  
-        // For Image File Upload 
-        
+        $formData['city_name'] = $request->name;
+        $formData['country_id'] = $request->country_id;
+        // For Image File Upload
+
         DB::table('cities')->insert($formData);
 
         $notification = array('message' => 'city Created Successfully!','alert-type' => 'success');
@@ -61,9 +61,9 @@ class CityController extends Controller
     public function update(Request $request){
         $upData = $request->all();
         $upData = array();
-        $upData['city_name'] = $request->name;  
-        $upData['country_id'] = $request->country_id;  
-        // For Image File Upload    
+        $upData['city_name'] = $request->name;
+        $upData['country_id'] = $request->country_id;
+        // For Image File Upload
         DB::table('cities')->where('id',$request->id)->update($upData);
         $notification = array('message' => 'City Updated Successfully!','alert-type' => 'success');
         return redirect()->back()->with($notification);
